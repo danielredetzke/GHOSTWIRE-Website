@@ -29,8 +29,9 @@
     });
   }
 
-  // The number in the page is the fallback; Gitea has the current one.
-  fetch('https://git.redetzke.aero/api/v1/repos/Redetzke/GHOSTWIRE/releases/latest')
+  // The number in the page is the fallback; latest.json is Gitea's latest
+  // release, forwarded by nginx because Gitea sends no CORS headers.
+  fetch('latest.json')
     .then((r) => (r.ok ? r.json() : null))
     .then((rel) => { if (rel && /^v\d+\.\d+\.\d+$/.test(rel.tag_name)) document.getElementById('ver').textContent = rel.tag_name; })
     .catch(() => {});
