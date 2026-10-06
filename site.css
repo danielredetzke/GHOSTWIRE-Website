@@ -161,6 +161,8 @@ footer .links { display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 13px; 
 footer .links a { color: var(--side-ink); text-decoration: none; }
 footer .links a:hover { color: #fff; }
 footer small { display: block; width: 100%; font-size: 12px; color: var(--side-mute); }
+footer small a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+footer small a:hover { color: #fff; }
 
 /* toast, as in the app */
 .toasts { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 8px; z-index: 50; max-width: calc(100vw - 32px); }
