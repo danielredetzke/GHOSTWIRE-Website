@@ -44,6 +44,13 @@
         <span>Run as a user with sudo, or as root</span>
       </div>
       <div class="src">
+        <div class="lbl"><strong>Short link</strong><span class="host">ghostwi.re</span></div>
+        <div class="cmd">
+          <pre id="cmd-short"><span class="p">$ </span>curl -fsSL https://ghostwi.re/install | sh</pre>
+          <button type="button" class="btn swap" data-copy="cmd-short"><span class="en">Copy</span><span class="ja" lang="ja" aria-hidden="true">コピー</span></button>
+        </div>
+      </div>
+      <div class="src">
         <div class="lbl"><strong>Gitea</strong><span class="host">git.redetzke.aero</span></div>
         <div class="cmd">
           <pre id="cmd-gitea"><span class="p">$ </span>curl -fsSL https://git.redetzke.aero/Redetzke/GHOSTWIRE/raw/branch/main/install.sh | sh</pre>
@@ -57,7 +64,7 @@
           <button type="button" class="btn swap" data-copy="cmd-github"><span class="en">Copy</span><span class="ja" lang="ja" aria-hidden="true">コピー</span></button>
         </div>
       </div>
-      <p class="hint">Both carry the same script and releases. It downloads the latest release for the server's architecture, checks it against <code>SHA256SUMS</code>, asks a few questions and changes nothing until you confirm.</p>
+      <p class="hint">All three fetch the same script; the short link leads to the one on Gitea. It downloads the latest release for the server's architecture, checks it against <code>SHA256SUMS</code>, asks a few questions and changes nothing until you confirm.</p>
     </div>
 
     <div class="meta">
