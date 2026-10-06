@@ -1,0 +1,169 @@
+/* The GHOSTWIRE web interface's own tokens (app.css), unchanged. The page
+   follows the app: ink for the sidebar and sign-in look, the off-white
+   ground with white cards for content. Light only, like the app. */
+:root {
+  --ink: #16171a;
+  --ink-2: #5b5c61;
+  --ink-3: #6a6b70;
+  --ground: #f4f4f1;
+  --surface: #fff;
+  --line: #e3e3de;
+  --line-2: #efefeb;
+  --field: #d3d3cd;
+  --link: #1c5cab;
+  --link-hover: #104281;
+  --focus: #2a78d6;
+  --down: #2a78d6;
+  --good: #0ca30c;
+  --side-ink: #c9c9c3;
+  --side-mute: #8d8e93;
+  --side-line: #2c2d32;
+  --side-hover: #222328;
+  --side-on: #2a2b31;
+  --code-ink: #e6e6e1;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --brand: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --ja: "Hiragino Sans", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+  color-scheme: light;
+}
+
+@font-face { font-family: "Shippori Mincho B1"; font-weight: 800; font-display: swap; src: url("ShipporiMinchoB1-ExtraBold.woff2") format("woff2"); }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.5; }
+a { color: var(--link); text-decoration-color: rgba(28, 92, 171, .35); text-underline-offset: 3px; }
+a:hover { color: var(--link-hover); text-decoration-color: currentColor; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+code, .mono { font-family: var(--mono); font-size: .9em; }
+.ar { display: inline-block; transition: transform .15s; }
+a.ext .ar { margin-left: 2px; font-size: .8em; }
+a.ext:hover .ar { transform: translate(2px, -2px); }
+a.go .ar { margin-left: 4px; }
+a.go:hover .ar { transform: translateX(3px); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .ar { transition: none; } }
+
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding-inline: 32px; }
+@media (max-width: 640px) { .wrap { padding-inline: 16px; } }
+
+/* logo lockup, as brand() in app.js */
+.brand { display: flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; }
+a.brand:hover { color: #fff; }
+.brand svg { flex: none; }
+.brand .wm { font-family: var(--brand); font-weight: 800; font-size: 16px; letter-spacing: .14em; line-height: 1.2; }
+.brand .kana { font-family: var(--brand); font-weight: 800; font-size: 10px; letter-spacing: .3em; color: var(--side-mute); margin-top: 2px; }
+.brand.stack { flex-direction: column; gap: 18px; text-align: center; }
+.brand.stack .wm { font-size: 30px; letter-spacing: .22em; margin-right: -.22em; }
+.brand.stack .kana { font-size: 13px; letter-spacing: .4em; margin: 8px -.4em 0 0; }
+
+/* ink part: top bar and hero, the sidebar and sign-in look */
+.ink { background: var(--ink); color: var(--side-ink); }
+.top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; padding-block: 18px; }
+.top nav { display: flex; flex-wrap: wrap; gap: 2px; }
+.top nav a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 12px; border-radius: 8px; color: var(--side-ink); font-size: 14px; font-weight: 500; text-decoration: none; }
+.top nav a:hover { background: var(--side-hover); color: #fff; }
+@media (max-width: 640px) { .top nav .opt-nav { display: none; } }
+
+.hero { display: flex; flex-direction: column; align-items: center; gap: 36px; padding-block: 56px 168px; text-align: center; }
+.hero h1 { margin: 0; color: #f4f4f1; font-size: clamp(28px, 4.4vw, 42px); font-weight: 600; letter-spacing: -.015em; line-height: 1.15; text-wrap: balance; }
+.hero .sub { margin: 14px auto 0; max-width: 60ch; font-size: 16px; color: var(--side-ink); text-wrap: pretty; }
+.meta { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 10px; font-size: 13px; color: var(--side-mute); }
+.meta .chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--side-line); color: var(--side-ink); }
+.meta .chip strong { color: #fff; font-weight: 500; font-family: var(--mono); font-size: 12.5px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--good); display: inline-block; flex: none; }
+
+/* install box: the setup page's dark panel with the Updates card's parts */
+.install { width: 100%; max-width: 900px; text-align: left; border: 1px solid var(--side-line); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 16px; background: #1b1c20; }
+.install .hd { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
+.install .hd strong { color: #fff; font-weight: 600; font-size: 16px; }
+.install .hd span { font-size: 13px; color: var(--side-mute); }
+.src { display: flex; flex-direction: column; gap: 8px; }
+.src .lbl { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; font-size: 13px; }
+.src .lbl strong { color: #fff; font-weight: 500; }
+.src .lbl .host { font-family: var(--mono); font-size: 12px; color: var(--side-mute); }
+.cmd { display: flex; align-items: stretch; gap: 8px; }
+.cmd pre { flex: 1; min-width: 0; margin: 0; padding: 12px 14px; background: var(--ink); color: var(--code-ink); border: 1px solid var(--side-line); border-radius: 10px; font-family: var(--mono); font-size: 13px; line-height: 1.6; overflow-x: auto; white-space: pre; }
+.cmd pre .p { color: var(--side-mute); user-select: none; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 0 16px; border-radius: 8px; border: 1px solid var(--field); background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; white-space: nowrap; }
+.btn:hover { background: var(--ground); color: var(--ink); }
+.cmd .btn { flex: none; min-height: 0; width: 76px; background: var(--side-on); border-color: #3a3b41; color: #fff; }
+.cmd .btn:hover { background: #34353b; color: #fff; }
+.cmd .btn.done { background: #f4f4f1; border-color: #f4f4f1; color: var(--ink); }
+.install .hint { margin: 0; font-size: 12.5px; color: var(--side-mute); }
+@media (max-width: 560px) { .cmd { flex-direction: column; } .cmd .btn { width: 100%; min-height: 40px; } }
+
+/* the hover swap of the sign-in button: English, then Japanese */
+.swap .ja { display: none; font-family: var(--ja); letter-spacing: .1em; }
+.swap:hover .en { display: none; }
+.swap:hover .ja { display: inline; }
+
+/* screenshot, pulled up into the ink */
+.shot { margin-top: -128px; }
+.shot figure { margin: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); box-shadow: 0 30px 80px rgba(22, 23, 26, .28), 0 2px 6px rgba(22, 23, 26, .12); }
+.shot img { display: block; width: 100%; height: auto; }
+.shot figcaption { margin-top: 12px; font-size: 13px; color: var(--ink-3); text-align: center; }
+
+main { display: flex; flex-direction: column; gap: 72px; padding-block: 0 88px; }
+section { display: flex; flex-direction: column; gap: 20px; }
+.group { display: flex; flex-direction: column; gap: 4px; }
+.group .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.group h2 { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -.01em; text-wrap: balance; }
+.group p { margin: 4px 0 0; max-width: 64ch; color: var(--ink-2); }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 20px; min-width: 0; }
+.card h3 { margin: 0; font-size: 16px; font-weight: 600; }
+
+/* pivpn: the app's blue notice */
+.notice { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; padding: 16px 20px; border-radius: 12px; background: #e8f0fa; color: #174d8f; font-size: 14px; }
+.notice > div { flex: 1 1 420px; min-width: 0; }
+.notice strong { font-weight: 600; }
+.notice p { margin: 2px 0 0; }
+.notice a { color: #174d8f; font-weight: 500; }
+
+/* features */
+.feats { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.feat { display: flex; flex-direction: column; gap: 8px; }
+.feat .ic { width: 36px; height: 36px; border-radius: 8px; display: grid; place-items: center; background: var(--ink); color: #fff; margin-bottom: 6px; }
+.feat p { margin: 0; color: var(--ink-2); font-size: 14px; }
+.feat code { font-size: 12.5px; color: var(--ink); }
+
+/* install transcript and requirements */
+.split { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
+.split > .grow { flex: 3 1 460px; min-width: 0; }
+.split > .aside { flex: 2 1 300px; min-width: 0; }
+pre.code { margin: 0; padding: 18px; background: var(--ink); color: var(--code-ink); border-radius: 12px; font-family: var(--mono); font-size: 12.5px; line-height: 1.65; overflow-x: auto; white-space: pre; }
+pre.code .h { color: #fff; font-weight: 600; }
+pre.code .m { color: var(--side-mute); }
+pre.code .u { color: #9cc3f5; }
+.kv { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 12px 16px; margin: 16px 0 0; font-size: 14px; }
+.kv dt { color: var(--ink-2); }
+.kv dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.aside .card + .card { margin-top: 20px; }
+.lead { margin: 4px 0 0; color: var(--ink-2); font-size: 13px; }
+.tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: #fdf0e1; color: #7a3d00; margin-left: 6px; vertical-align: 2px; }
+
+/* security: the Health card's rows */
+.hclist { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.hcrow { display: grid; grid-template-columns: 8px minmax(0, 220px) minmax(0, 1fr); gap: 2px 16px; align-items: baseline; padding: 14px 20px; border-top: 1px solid var(--line-2); }
+.hcrow:first-child { border-top: 0; }
+.hcrow > .dot { align-self: center; }
+.hcrow .l { font-size: 14px; color: var(--ink-2); }
+.hcrow .v { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; min-width: 0; }
+.hcrow .s { font-weight: 500; }
+.hcrow .r { font-size: 13px; color: var(--ink-3); }
+@media (max-width: 640px) { .hcrow { grid-template-columns: 8px minmax(0, 1fr); padding: 12px 16px; } .hcrow .v { grid-column: 2; } }
+
+/* footer */
+footer { padding-block: 32px 40px; }
+footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; }
+footer .links { display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 13px; }
+footer .links a { color: var(--side-ink); text-decoration: none; }
+footer .links a:hover { color: #fff; }
+footer small { display: block; width: 100%; font-size: 12px; color: var(--side-mute); }
+
+/* toast, as in the app */
+.toasts { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 8px; z-index: 50; max-width: calc(100vw - 32px); }
+.toast { background: var(--ink); color: #fff; padding: 12px 16px; border-radius: 10px; font-size: 13px; box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+.toast.err { background: #b4232a; }
+main > .first { margin-top: 40px; }

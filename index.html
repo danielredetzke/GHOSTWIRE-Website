@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<title>GHOSTWIRE</title>
+<meta name="description" content="A self-hosted WireGuard server manager in a single Go binary, with a web interface, a JSON API and an iPhone app.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="site.css">
+<script src="site.js" defer></script>
+</head>
+<body>
+<div class="ink">
+  <header class="wrap top">
+    <a class="brand" href="#">
+      <svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1b1b1d"/><rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#fff" stroke-opacity="0.2"/><g transform="translate(32 34) scale(0.9) translate(-32 -27)"><path d="M22 21C17 17 15 11 16 5c3 5 7 8 12 11zM42 21c5-4 7-10 6-16-3 5-7 8-12 11z" fill="#fff"/><path d="M18 46V29c0-9 6-14 14-14s14 5 14 14v17l-4.5-5-4.5 8-5-6-5 6-4.5-8z" fill="#fff"/><path d="M20 27l10 4.5-1.5 2.5-6.5-1.5zM44 27l-10 4.5 1.5 2.5 6.5-1.5z" fill="#c8372d"/></g></svg>
+      <div><div class="wm">GHOSTWIRE</div><div class="kana" lang="ja">ゴーストワイヤー</div></div>
+    </a>
+    <nav aria-label="Main">
+      <a class="opt-nav" href="#features">Features</a>
+      <a class="opt-nav" href="#security">Security</a>
+      <a href="#install">Install</a>
+      <a class="ext" href="https://git.redetzke.aero/Redetzke/GHOSTWIRE">Gitea <span class="ar">↗</span></a>
+      <a class="ext" href="https://github.com/danielredetzke/GHOSTWIRE">GitHub <span class="ar">↗</span></a>
+    </nav>
+  </header>
+
+  <div class="wrap hero" id="install">
+    <div class="brand stack" aria-hidden="true">
+      <svg width="72" height="72" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#1b1b1d"/><rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#fff" stroke-opacity="0.2"/><g transform="translate(32 34) scale(0.9) translate(-32 -27)"><path d="M22 21C17 17 15 11 16 5c3 5 7 8 12 11zM42 21c5-4 7-10 6-16-3 5-7 8-12 11z" fill="#fff"/><path d="M18 46V29c0-9 6-14 14-14s14 5 14 14v17l-4.5-5-4.5 8-5-6-5 6-4.5-8z" fill="#fff"/><path d="M20 27l10 4.5-1.5 2.5-6.5-1.5zM44 27l-10 4.5 1.5 2.5 6.5-1.5z" fill="#c8372d"/></g></svg>
+      <div><div class="wm">GHOSTWIRE</div><div class="kana" lang="ja">ゴーストワイヤー</div></div>
+    </div>
+
+    <div>
+      <h1>Your WireGuard server, in one binary</h1>
+      <p class="sub">GHOSTWIRE sets up the server, manages peers and hands out configs as a QR code or download. It keeps traffic and connection history per peer, and has a JSON API and an iPhone app. Nothing else to install: the binary installs, updates and removes itself.</p>
+    </div>
+
+    <div class="install">
+      <div class="hd">
+        <strong>Install on a Linux server</strong>
+        <span>Run as a user with sudo, or as root</span>
+      </div>
+      <div class="src">
+        <div class="lbl"><strong>Gitea</strong><span class="host">git.redetzke.aero</span></div>
+        <div class="cmd">
+          <pre id="cmd-gitea"><span class="p">$ </span>curl -fsSL https://git.redetzke.aero/Redetzke/GHOSTWIRE/raw/branch/main/install.sh | sh</pre>
+          <button type="button" class="btn swap" data-copy="cmd-gitea"><span class="en">Copy</span><span class="ja" lang="ja" aria-hidden="true">コピー</span></button>
+        </div>
+      </div>
+      <div class="src">
+        <div class="lbl"><strong>GitHub mirror</strong><span class="host">github.com</span></div>
+        <div class="cmd">
+          <pre id="cmd-github"><span class="p">$ </span>curl -fsSL https://raw.githubusercontent.com/danielredetzke/GHOSTWIRE/main/install.sh | sh</pre>
+          <button type="button" class="btn swap" data-copy="cmd-github"><span class="en">Copy</span><span class="ja" lang="ja" aria-hidden="true">コピー</span></button>
+        </div>
+      </div>
+      <p class="hint">Both carry the same script and releases. It downloads the latest release for the server's architecture, checks it against <code>SHA256SUMS</code>, asks a few questions and changes nothing until you confirm.</p>
+    </div>
+
+    <div class="meta">
+      <span class="chip"><span class="dot"></span>Latest <strong id="ver">v0.8.0</strong></span>
+      <span class="chip">Linux · amd64 · arm64 · armv7</span>
+      <span class="chip">MIT license</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap shot">
+  <figure>
+    <img src="dashboard.png" width="2880" height="2058" alt="The GHOSTWIRE dashboard: five of six peers online, traffic of the last 24 hours as a bar chart, the peer list and recent activity">
+  </figure>
+</div>
+
+<main class="wrap">
+  <section class="first">
+    <div class="notice">
+      <div>
+        <strong>Coming from pivpn?</strong>
+        <p>The same install command takes over a pivpn WireGuard server: its key, networks and every client with its keys and addresses. Phones and laptops keep their configs and reconnect on their own. If the switch fails, pivpn comes back as it was.</p>
+      </div>
+      <a class="go ext" href="https://git.redetzke.aero/Redetzke/GHOSTWIRE#moving-from-pivpn">Moving from pivpn <span class="ar">↗</span></a>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="group">
+      <span class="eyebrow">Features</span>
+      <h2>Everything for a WireGuard server, nothing around it</h2>
+      <p>One Go binary with the web interface built in. It talks to the kernel directly, so the server needs no <code>wg-quick</code>, no <code>wireguard-tools</code> and no <code>/etc/wireguard</code>.</p>
+    </div>
+    <div class="feats">
+      <article class="card feat">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M16 4.8a3.5 3.5 0 0 1 0 6.4M18.5 14.8c1.5.8 2.6 2.6 3 5.2"/></svg></span>
+        <h3>Peers</h3>
+        <p>Add, change, disable and remove devices. Hand out a config as a download or QR code, or send a one-time setup link protected by a PIN.</p>
+      </article>
+      <article class="card feat">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></span>
+        <h3>Live view</h3>
+        <p>The speed of every peer right now, updated every 2 seconds, with the last 2 minutes as a chart.</p>
+      </article>
+      <article class="card feat">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+        <h3>Traffic history</h3>
+        <p>Download and upload per peer, hourly for 48 hours and daily for 400 days.</p>
+      </article>
+      <article class="card feat">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+        <h3>Connection history</h3>
+        <p>Every session with start, duration, address and traffic. Country and network come from DB-IP Lite, looked up on the server, so addresses never leave it.</p>
+      </article>
+      <article class="card feat">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></span>
+        <h3>Changes without drops</h3>
+        <p>Only peers that changed are touched, the same effect as <code>wg syncconf</code>. Everyone else stays connected.</p>
+      </article>
+      <article class="card feat">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span>
+        <h3>One file of state</h3>
+        <p>Everything lives in <code>config.json</code>, and the kernel is kept in line with it: netlink for <code>wg0</code>, nftables in its own <code>inet GHOSTWIRE</code> table.</p>
+      </article>
+      <article class="card feat">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></span>
+        <h3>IPv4 and IPv6</h3>
+        <p>IPv6 inside the tunnel turns on by itself when the server has a global IPv6 address.</p>
+      </article>
+      <article class="card feat">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+        <h3>HTTPS built in</h3>
+        <p>Let's Encrypt, a self-signed certificate, your own certificate files, or plain HTTP behind a reverse proxy.</p>
+      </article>
+      <article class="card feat">
+        <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v4.5h-4.5"/></svg></span>
+        <h3>Updates</h3>
+        <p>A daily check against Gitea or GitHub shows new releases with their notes. An update backs up the config and goes back to the old binary if the new one doesn't stay up.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="setup">
+    <div class="group">
+      <span class="eyebrow">Install</span>
+      <h2>A few questions, then a summary</h2>
+      <p>Install asks for a domain, the WireGuard port and an admin password. With a domain it gets a Let's Encrypt certificate; without one it uses a self-signed certificate and the server's public IP. For scripts, every question has a flag.</p>
+    </div>
+    <div class="split">
+      <pre class="code grow" aria-label="Example install session"><span class="h">Web interface</span>
+  Domain name for the web interface (empty: no domain, self-signed certificate)
+  &gt; <span class="u">vpn.example.net</span>
+  Email for Let's Encrypt expiry warnings (optional)
+  &gt; <span class="u">you@example.net</span>
+
+<span class="h">WireGuard</span>
+  Address devices connect to [vpn.example.net]
+  &gt;
+  UDP port [51820]
+  &gt;
+
+<span class="h">Admin account</span>
+  Password for "admin" (at least 12 characters): <span class="m">************</span>
+  Repeat password: <span class="m">************</span>
+
+<span class="h">Summary</span>
+  Web interface   https://vpn.example.net/ (Let's Encrypt, you@example.net)
+  Endpoint        vpn.example.net:51820/udp
+  Tunnel network  10.214.86.0/24 (random free range) · IPv6 on
+  Firewall        443/tcp, 80/tcp, 51820/udp must be reachable
+
+Install with these settings? [Y/n]</pre>
+      <div class="aside">
+        <div class="card">
+          <h3>Requirements</h3>
+          <dl class="kv">
+            <dt>System</dt><dd>Linux, kernel 5.6 or newer, with nftables and systemd</dd>
+            <dt>Hardware</dt><dd>amd64, arm64 or 32-bit ARM, including Raspberry Pi</dd>
+            <dt>Ports</dt><dd><span class="mono">51820/udp</span> WireGuard, <span class="mono">443/tcp</span> web, <span class="mono">80/tcp</span> optional for Let's Encrypt</dd>
+          </dl>
+        </div>
+        <div class="card">
+          <h3>iPhone app <span class="tag">Beta</span></h3>
+          <p class="lead">Manage peers and the server and see stats and logs on iOS 17 or newer. Pair it under Settings → Pair iOS app. For a beta invite, write to <span class="mono">engineroom@redetzke.aero</span>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="security">
+    <div class="group">
+      <span class="eyebrow">Security</span>
+      <h2>Small surface, nothing kept that isn't needed</h2>
+      <p>The service runs unprivileged, signs in with modern factors and never stores a client's private key.</p>
+    </div>
+    <div class="hclist">
+      <div class="hcrow"><span class="dot"></span><span class="l">Client private keys</span><span class="v"><span class="s">Never stored</span><span class="r">A config is shown once. Issuing a new one makes new keys.</span></span></div>
+      <div class="hcrow"><span class="dot"></span><span class="l">Service</span><span class="v"><span class="s">Runs as <span class="mono">ghostwire</span>, not root</span><span class="r">Only CAP_NET_ADMIN and CAP_NET_BIND_SERVICE; writes only to /opt/ghostwire.</span></span></div>
+      <div class="hcrow"><span class="dot"></span><span class="l">Passwords</span><span class="v"><span class="s">argon2id</span><span class="r">5 failed attempts lock an address for 15 minutes.</span></span></div>
+      <div class="hcrow"><span class="dot"></span><span class="l">Two-step sign-in</span><span class="v"><span class="s">Passkeys and authenticator apps</span><span class="r">Touch ID, Face ID, Windows Hello, YubiKey; can be required for everyone.</span></span></div>
+      <div class="hcrow"><span class="dot"></span><span class="l">Setup links</span><span class="v"><span class="s">One-time, with a PIN</span><span class="r">Keys are made when the link is opened. 5 wrong PINs revoke it.</span></span></div>
+      <div class="hcrow"><span class="dot"></span><span class="l">API tokens</span><span class="v"><span class="s">Stored as hashes</span><span class="r">Read-only or full access, never for users or passwords.</span></span></div>
+      <div class="hcrow"><span class="dot"></span><span class="l">Server key</span><span class="v"><span class="s">Readable only by the service</span><span class="r">config.json is 0600.</span></span></div>
+    </div>
+  </section>
+</main>
+
+<footer class="ink">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#1b1b1d"/><rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#fff" stroke-opacity="0.2"/><g transform="translate(32 34) scale(0.9) translate(-32 -27)"><path d="M22 21C17 17 15 11 16 5c3 5 7 8 12 11zM42 21c5-4 7-10 6-16-3 5-7 8-12 11z" fill="#fff"/><path d="M18 46V29c0-9 6-14 14-14s14 5 14 14v17l-4.5-5-4.5 8-5-6-5 6-4.5-8z" fill="#fff"/><path d="M20 27l10 4.5-1.5 2.5-6.5-1.5zM44 27l-10 4.5 1.5 2.5 6.5-1.5z" fill="#c8372d"/></g></svg>
+      <div><div class="wm">GHOSTWIRE</div><div class="kana" lang="ja">ゴーストワイヤー</div></div>
+    </a>
+    <div class="links">
+      <a href="https://git.redetzke.aero/Redetzke/GHOSTWIRE">Source on Gitea</a>
+      <a href="https://github.com/danielredetzke/GHOSTWIRE">GitHub mirror</a>
+      <a href="https://git.redetzke.aero/Redetzke/GHOSTWIRE/releases">Releases</a>
+      <a href="https://git.redetzke.aero/Redetzke/GHOSTWIRE#readme">Documentation</a>
+    </div>
+    <small>MIT license · © 2026 Daniel Redetzke · The mark is the Hannya mask of Noh theatre. WireGuard is a registered trademark of Jason A. Donenfeld.</small>
+  </div>
+</footer>
+<div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+</body>
+</html>
