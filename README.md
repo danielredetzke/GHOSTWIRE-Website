@@ -1,6 +1,6 @@
 # GHOSTWIRE Website
 
-The one-page website for [GHOSTWIRE](https://git.redetzke.aero/Redetzke/GHOSTWIRE),
+The one-page website for [GHOSTWIRE](https://github.com/danielredetzke/GHOSTWIRE),
 the self-hosted WireGuard server manager, served at
 [ghostwi.re](https://ghostwi.re).
 
@@ -24,8 +24,9 @@ no tracking, and no requests to other sites.
 
 nginx serves the files and adds two routes that are not in this repository:
 
-- `/install` redirects to `install.sh` on Gitea's main branch, so
+- `/install` redirects to `install.sh` on GitHub's main branch, so
   `curl -fsSL https://ghostwi.re/install | sh` always fetches the current
   script.
-- `/latest.json` forwards Gitea's latest GHOSTWIRE release. `site.js` reads
-  `tag_name` from it for the version badge, since Gitea sends no CORS headers.
+- `/latest.json` forwards GitHub's latest GHOSTWIRE release. `site.js` reads
+  `tag_name` from it for the version badge, so the page makes no requests to
+  other sites.

@@ -29,8 +29,8 @@
     });
   }
 
-  // The number in the page is the fallback; latest.json is Gitea's latest
-  // release, forwarded by nginx because Gitea sends no CORS headers.
+  // The number in the page is the fallback; latest.json is GitHub's latest
+  // release, forwarded by nginx so the page makes no requests to other sites.
   fetch('latest.json')
     .then((r) => (r.ok ? r.json() : null))
     .then((rel) => { if (rel && /^v\d+\.\d+\.\d+$/.test(rel.tag_name)) document.getElementById('ver').textContent = rel.tag_name; })
