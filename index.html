@@ -36,8 +36,7 @@
   "license": "https://opensource.org/licenses/MIT",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
-  "codeRepository": "https://git.redetzke.aero/Redetzke/GHOSTWIRE",
-  "sameAs": ["https://github.com/danielredetzke/GHOSTWIRE"],
+  "codeRepository": "https://github.com/danielredetzke/GHOSTWIRE",
   "author": { "@type": "Person", "name": "Daniel Redetzke" }
 }
 </script>
@@ -55,7 +54,6 @@
       <a class="opt-nav" href="#features">Features</a>
       <a class="opt-nav" href="#security">Security</a>
       <a href="#install">Install</a>
-      <a class="ext" href="https://git.redetzke.aero/Redetzke/GHOSTWIRE" target="_blank" rel="noopener">Gitea <span class="ar">↗</span></a>
       <a class="ext" href="https://github.com/danielredetzke/GHOSTWIRE" target="_blank" rel="noopener">GitHub <span class="ar">↗</span></a>
     </nav>
   </header>
@@ -84,24 +82,17 @@
         </div>
       </div>
       <div class="src">
-        <div class="lbl"><strong>Gitea</strong><span class="host">git.redetzke.aero</span></div>
-        <div class="cmd">
-          <pre id="cmd-gitea"><span class="p">$ </span>curl -fsSL https://git.redetzke.aero/Redetzke/GHOSTWIRE/raw/branch/main/install.sh | sh</pre>
-          <button type="button" class="btn swap" data-copy="cmd-gitea"><span class="en">Copy</span><span class="ja" lang="ja" aria-hidden="true">コピー</span></button>
-        </div>
-      </div>
-      <div class="src">
-        <div class="lbl"><strong>GitHub mirror</strong><span class="host">github.com</span></div>
+        <div class="lbl"><strong>GitHub</strong><span class="host">github.com</span></div>
         <div class="cmd">
           <pre id="cmd-github"><span class="p">$ </span>curl -fsSL https://raw.githubusercontent.com/danielredetzke/GHOSTWIRE/main/install.sh | sh</pre>
           <button type="button" class="btn swap" data-copy="cmd-github"><span class="en">Copy</span><span class="ja" lang="ja" aria-hidden="true">コピー</span></button>
         </div>
       </div>
-      <p class="hint">All three fetch the same script; the short link leads to the one on Gitea. It downloads the latest release for the server's architecture, checks it against <code>SHA256SUMS</code>, asks a few questions and changes nothing until you confirm.</p>
+      <p class="hint">Both fetch the same script; the short link leads to the one on GitHub. It downloads the latest release for the server's architecture, checks it against <code>SHA256SUMS</code>, asks a few questions and changes nothing until you confirm.</p>
     </div>
 
     <div class="meta">
-      <span class="chip"><span class="dot"></span>Latest <strong id="ver">v0.9.0</strong></span>
+      <span class="chip"><span class="dot"></span>Latest <strong id="ver">v0.9.1</strong></span>
       <span class="chip">Linux · amd64 · arm64 · armv7</span>
       <span class="chip">MIT license</span>
     </div>
@@ -121,7 +112,7 @@
         <strong>Coming from pivpn?</strong>
         <p>The same install command takes over a pivpn WireGuard server: its key, networks and every client with its keys and addresses. Phones and laptops keep their configs and reconnect on their own. If the switch fails, pivpn comes back as it was.</p>
       </div>
-      <a class="go ext" href="https://git.redetzke.aero/Redetzke/GHOSTWIRE#moving-from-pivpn" target="_blank" rel="noopener">Moving from pivpn <span class="ar">↗</span></a>
+      <a class="go ext" href="https://github.com/danielredetzke/GHOSTWIRE#moving-from-pivpn" target="_blank" rel="noopener">Moving from pivpn <span class="ar">↗</span></a>
     </div>
   </section>
 
@@ -175,7 +166,7 @@
       <article class="card feat">
         <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v4.5h-4.5"/></svg></span>
         <h3>Updates</h3>
-        <p>A daily check against Gitea or GitHub shows new releases with their notes. An update backs up the config and goes back to the old binary if the new one doesn't stay up.</p>
+        <p>A daily check against GitHub shows new releases with their notes. An update backs up the config and goes back to the old binary if the new one doesn't stay up.</p>
       </article>
     </div>
   </section>
@@ -252,10 +243,9 @@ Install with these settings? [Y/n]</pre>
       <div><div class="wm">GHOSTWIRE</div><div class="kana" lang="ja">ゴーストワイヤー</div></div>
     </a>
     <div class="links">
-      <a href="https://git.redetzke.aero/Redetzke/GHOSTWIRE" target="_blank" rel="noopener">Source on Gitea</a>
-      <a href="https://github.com/danielredetzke/GHOSTWIRE" target="_blank" rel="noopener">GitHub mirror</a>
-      <a href="https://git.redetzke.aero/Redetzke/GHOSTWIRE/releases" target="_blank" rel="noopener">Releases</a>
-      <a href="https://git.redetzke.aero/Redetzke/GHOSTWIRE#readme" target="_blank" rel="noopener">Documentation</a>
+      <a href="https://github.com/danielredetzke/GHOSTWIRE" target="_blank" rel="noopener">Source on GitHub</a>
+      <a href="https://github.com/danielredetzke/GHOSTWIRE/releases" target="_blank" rel="noopener">Releases</a>
+      <a href="https://github.com/danielredetzke/GHOSTWIRE#readme" target="_blank" rel="noopener">Documentation</a>
     </div>
     <small>MIT license · © 2026 <a href="https://redetzke.aero" target="_blank" rel="noopener">Daniel Redetzke</a> · The mark is the Hannya mask of Noh theatre. WireGuard is a registered trademark of Jason A. Donenfeld.</small>
   </div>
